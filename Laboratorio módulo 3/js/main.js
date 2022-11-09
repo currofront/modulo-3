@@ -8,32 +8,37 @@ const product = {
     type: "libro" 
 };
 
-if (product.count >= 0) {product.count = product.count} else {product.count = 0}
+if (product.count >= 0) {product.count = product.count} else {product.count = 0};
 
-// if (product.type == "ropa") {iva = 0.21};
-// if (product.type == "alimentacion") {iva = 0.1};
-// if (product.type == "libro") {iva = 0.04};
-
-switch(product.type) {
-    case "ropa": iva = 0.21; break;
-    case "alimentacion": iva = 0.1; break;
-    case "libro": iva = 0.04; break;
-    default: console.log("Indique un tipo de producto válido"); break;
+let getVat = () => { 
+    switch(product.type) {
+    case "ropa": return iva = 0.21; break;
+    case "alimentacion": return iva = 0.1; break;
+    case "libro": return iva = 0.04; break;
+    default: return console.log("Indique un tipo de producto válido"); break;
    }
+};
 
-let total = product.count * product.price;
+console.log("Tipo de producto: " + product.type);
 
-let totalIva = total * iva;
+console.log("Coste por unidad: " + product.price);
 
-let totalProducto = total + totalIva;
+console.log("Cantidad: " + product.count);
 
-console.log("Precio del producto sin IVA: " + total);
 
-console.log("IVA: " + iva)
+let getTotalProduct = () => product.count * product.price;
 
-console.log("Total IVA: " + totalIva)
+let getTotalVat = () => getTotalProduct() * getVat();
 
-console.log("Precio final: " + totalProducto)
+let getTotal = () => getTotalProduct() + getTotalVat();
+
+console.log("Precio del producto sin IVA: " + getTotalProduct());
+
+console.log("IVA: " + getVat());
+
+console.log("Total IVA: " + getTotalVat());
+
+console.log("Precio final: " + getTotal())
 
 
 // Extra 1
@@ -48,10 +53,13 @@ const empleado = {
 
  
 
-  if(empleado.bruto < 12000) {retencion = 0};
-  if(empleado.bruto >= 12000 && empleado.bruto < 24000 ) {retencion = 0.08};
-  if(empleado.bruto >= 24000 && empleado.bruto < 34000 ) {retencion = 0.16};
-  if(empleado.bruto >= 34000) {retencion = 0.3};
+  if(empleado.bruto < 12000) {
+    retencion = 0;
+} else if(empleado.bruto >= 12000 && empleado.bruto < 24000 ) {
+    retencion = 0.08;
+} else if(empleado.bruto >= 24000 && empleado.bruto < 34000 ) {
+    retencion = 0.16;
+} else {retencion = 0.3};
 
   if(empleado.hijos > 0 && retencion != 0) {retencion = retencion - 0.02;}
 
@@ -70,3 +78,7 @@ const empleado = {
    console.log("Neto anual: " + netoNominaAnual)
 
    console.log("Neto mensual: " + NetoNominaMensual)
+
+   // Avanzado 
+
+ 
